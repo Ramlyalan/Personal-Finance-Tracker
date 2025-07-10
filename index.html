@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Finance Tracker</title>
+</head>
+<body>
+    <h1>Personal Finance Tracker</h1>
+    <p>Total Income: ₹{{ income }}</p>
+    <p>Total Expense: ₹{{ expense }}</p>
+    <p>Balance: ₹{{ balance }}</p>
+    <a href="/add">Add Transaction</a>
+    <h2>Transactions</h2>
+    <table border="1">
+        <tr>
+            <th>Date</th><th>Type</th><th>Category</th><th>Amount</th><th>Action</th>
+        </tr>
+        {% for t in transactions %}
+        <tr>
+            <td>{{ t.date.strftime("%Y-%m-%d") }}</td>
+            <td>{{ t.type }}</td>
+            <td>{{ t.category }}</td>
+            <td>{{ t.amount }}</td>
+            <td><a href="/delete/{{ t.id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
